@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Einführung - Die Grund Idee eines MLM &#8212; MLM Seminar</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Modelspezifikation - Einführung" href="02_multilevel_model_specification.html" />
+    <link rel="prev" title="Seminar: Multilevel-Modelle - SoSe 2022" href="00_general_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">MLM Seminar</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_general_intro.html">
+   Seminar: Multilevel-Modelle - SoSe 2022
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Curriculum
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   1. Einführung - Die Grund Idee eines MLM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_multilevel_model_specification.html">
+   2. Modelspezifikation - Einführung
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01_multilevel_models_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AMD-Lab/R-Kurs-Buch"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/AMD-Lab/R-Kurs-Buch/issues/new?title=Issue%20on%20page%20%2F01_multilevel_models_intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AMD-Lab/R-Kurs-Buch/main?urlpath=tree/01_multilevel_models_intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/AMD-Lab/R-Kurs-Buch/blob/main/01_multilevel_models_intro.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ziele">
+   1.1. Ziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#die-grund-idee">
+   1.2. Die grund Idee
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hierarchische-daten">
+   1.3. Hierarchische Daten
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-1">
+     1.3.1. Beispiel 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-2">
+     1.3.2. Beispiel 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-3">
+     1.3.3. Beispiel 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#besipiel-4">
+     1.3.4. Besipiel 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#konzequenzen-hierarchische-daten">
+   1.4. Konzequenzen hierarchische Daten
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Einführung - Die Grund Idee eines MLM</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ziele">
+   1.1. Ziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#die-grund-idee">
+   1.2. Die grund Idee
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hierarchische-daten">
+   1.3. Hierarchische Daten
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-1">
+     1.3.1. Beispiel 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-2">
+     1.3.2. Beispiel 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-3">
+     1.3.3. Beispiel 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#besipiel-4">
+     1.3.4. Besipiel 4
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#konzequenzen-hierarchische-daten">
+   1.4. Konzequenzen hierarchische Daten
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="einfuhrung-die-grund-idee-eines-mlm">
+<h1><span class="section-number">1. </span>Einführung - Die Grund Idee eines MLM<a class="headerlink" href="#einfuhrung-die-grund-idee-eines-mlm" title="Permalink to this headline">¶</a></h1>
+<br>
+<p>Ansprechpartner:
+<a class="reference external" href="https://github.com/JoseAlanis">José C. García Alanis (he/him)</a><br />
+Wissenschaftlicher Mitarbeiter - Analyse und Modellierung komplexer Daten <a class="reference external" href="https://methoden.amd.psychologie.uni-mainz.de/">an der JGU</a>.<br />
+Kinder- und Jugendlichen-Psychotherapie in <a class="reference external" href="https://www.uni-marburg.de/de">Marburg</a>.<br />
+Mitglied in <a class="reference external" href="https://www.uni-marburg.de/en/fb04/rtg-2271">RTG 2271 | Breaking Expectations</a> und <a class="reference external" href="https://brainhack.org/">Brainhack</a>.<br />
+<br></p>
+<p>Kontakt:
+<span class="xref myst">jose.alanis[at]uni-mainz.de</span></p>
+<p><img align="left" src="https://raw.githubusercontent.com/G0RELLA/gorella_mwn/master/lecture/static/Twitter%20social%20icons%20-%20circle%20-%20blue.png" alt="logo" title="Twitter" width="30" height="30" /> <img align="left" src="https://raw.githubusercontent.com/G0RELLA/gorella_mwn/master/lecture/static/GitHub-Mark-120px-plus.png" alt="logo" title="Github" width="30" height="30" />     <a class="reference external" href="https://twitter.com/JoiAlhaniz">&#64;JoiAlhaniz</a> / <a class="reference external" href="https://github.com/JoseAlanis">&#64;JoseAlanis</a></p>
+<br><div class="section" id="ziele">
+<h2><span class="section-number">1.1. </span>Ziele<a class="headerlink" href="#ziele" title="Permalink to this headline">¶</a></h2>
+<p>Am Ende des heutigen Termins solltet ihr folgede Fragen beantworten können:</p>
+<ul class="simple">
+<li><p>Was sind hierachische Daten?</p></li>
+<li><p>Wie sehen hierarchische Daten aus?</p></li>
+<li><p>Welche Komplikationen bringen hierarchische Daten mit sich?</p></li>
+<li><p>Worauf soll man aufpassen, wenn man mit hierarchischen Daten zu tun hat?</p></li>
+<li><p>Wie kann man mit hierarchischen Daten umgehen? (Ausblick)</p></li>
+</ul>
+</div>
+<div class="section" id="die-grund-idee">
+<h2><span class="section-number">1.2. </span>Die grund Idee<a class="headerlink" href="#die-grund-idee" title="Permalink to this headline">¶</a></h2>
+<p>Eine simple Annahme:</p>
+<p>Die Ausprägung einer Variable hängt von der Ausprägung einer anderen Variable (oder Kombination von Variablen) ab.</p>
+<ul class="simple">
+<li><p>Beschreibung des Zusammenhangs anhand einer linearen Regression:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+y =\beta_{0} + X\beta + \epsilon
+\]</div>
+<p>Stellen Sie sich folgendes Beispiel vor. Dargestellt ist der Zusammenhang zwischen zweier Variablen <code class="docutils literal notranslate"><span class="pre">var_x</span></code> und <code class="docutils literal notranslate"><span class="pre">var_y</span></code>.</p>
+<ul class="simple">
+<li><p>wir könnten annehmen, dass <code class="docutils literal notranslate"><span class="pre">var_x</span></code> die Studiendauer (in Monaten) von Studiumbasolvent_innen repräsentiert. <code class="docutils literal notranslate"><span class="pre">var_y</span></code> könnte das Einstiegsgehalt repräsentieren.</p></li>
+<li><p>Die unten stehende Abbildung suggeriert:</p>
+<ul>
+<li><p>Je mehr von <code class="docutils literal notranslate"><span class="pre">x</span></code> (Dauer des Studiums) desto mehr von <code class="docutils literal notranslate"><span class="pre">y</span></code> (Gehalt).</p></li>
+</ul>
+</li>
+</ul>
+<center>
+     <div 
+          style="max-width: 70%; height: auto;">
+         <img 
+              src="static/simple_regress.png" 
+              alt="Photo showing Jose Alanis" 
+              title="simple_rel" >
+     </div>
+</center>
+<ul class="simple">
+<li><p>Was sagt die <em>gefittete</em> Linie aus?</p>
+<ul>
+<li><p>Die linie Zeit die <strong>best mögliche</strong> Beschreibung zwischen <code class="docutils literal notranslate"><span class="pre">var_x</span></code> und <code class="docutils literal notranslate"><span class="pre">var_y</span></code>. <em>Best möglich</em> bedeutet, dass wir eine möglichst genaue Schätzung von <code class="docutils literal notranslate"><span class="pre">var_y</span></code> für jeden Wert von <code class="docutils literal notranslate"><span class="pre">var_x</span></code> haben.</p></li>
+<li><p>Da der Zusammenhang zwischen den beiden Variablen nicht perfekt ist, müssen wir fehler im Kauf nehmen. Wir wollen aber, dass dieser Fehler möglichst gerig ist.</p></li>
+</ul>
+</li>
+</ul>
+<p>Nun denken Sie über folgende Aussagen nach:</p>
+<ul class="simple">
+<li><p>“Ein langes Studium zahlt sich in barer Münze aus” (Krämer 2009, S. 165)</p></li>
+<li><p>Zu diesem überraschenden Ergebnis kommt eine Studie über die Einstiegsgehälter von Berufsanfängern, für die die Deutsche Gesellschaft für Personalführung 44 Firmen befragt hat.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Also ein längeres Studium für zu einem höheren Einstiegsgehält</p></li>
+</ul>
+<br>
+<center>
+         <div style="max-width: 30%; height: auto;">
+    <img src="https://media2.giphy.com/media/11bsDL7acBaiKk/giphy.gif?cid=ecf05e475gub83vlhr22qwcguc34v6vwm95vnyklhspa7z7j&rid=giphy.gif&ct=g" alt="logo" title="Github" />
+    </div>
+</center><ul class="simple">
+<li><p>“Ein langes Studium zahlt sich in barer Münze aus” (Krämer 2009, S. 165) (je mehr von <code class="docutils literal notranslate"><span class="pre">x</span></code> desto mehr von <code class="docutils literal notranslate"><span class="pre">y</span></code>)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Wie sieht es aus, wenn wir die Struktur der Daten berücksichitigen?</p>
+<ul>
+<li><p>z.B. Wie sieht es aus mit Subgruppen? Sind die Daten <em>homogen</em>?</p></li>
+</ul>
+</li>
+</ul>
+<center>
+    <div 
+         style="max-width: 70%; height: auto;">
+        <img src="static/simple_groups.png" 
+             alt="Photo showing Jose Alanis" 
+             title="Jose" />
+    </div>       
+</center><ul class="simple">
+<li><p>wie wirkt sich die <strong>hierarchische Struktur der Daten</strong> auf die Regressions ergebnisse?</p></li>
+</ul>
+<center>
+    <div style="max-width: 70%; height: auto;">
+        <img 
+             src="static/simple_hlm.png" 
+             alt="Photo showing Jose Alanis" 
+             title="Jose" />
+    </div>
+</center>
+<ul class="simple">
+<li><p>Was wir hier sehen können, ist dass der Zusammenhang zweier Variablen sehr Unterschiedlich aussehen kann, jenachdem, ob wir uns den Zusammenhang über Gruppen hinweg oder innnerhalb der Gruppen anschauen.</p></li>
+</ul>
+</div>
+<div class="section" id="hierarchische-daten">
+<h2><span class="section-number">1.3. </span>Hierarchische Daten<a class="headerlink" href="#hierarchische-daten" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Datenstrukturen mit mehreren hierarchisch geordneten Ebenen (<em>levels</em>)</p></li>
+<li><p>Innerhalb jeder Ebene liegen klar definierte Einheiten vor (<em>units</em>)</p></li>
+<li><p>Jede Einheit einer Ebene ist eindeutig einer Einheit der nächsthöheren Ebene zugeordnet</p>
+<ul>
+<li><p>Hier sprechen wir von genestete Daten (<em>nested</em>, <em>clustered</em>)</p></li>
+</ul>
+</li>
+</ul>
+<br>
+<center>
+    <div style="max-width: 60%; height: auto;">
+        <img 
+             src="static/study_classes.png" 
+             alt="2-level university classes" 
+             title="2-level model (2)" />
+    </div>
+</center><p>Welche andere Beispiele für hierarchisch organisierten Daten gibt es?</p>
+<div class="section" id="beispiel-1">
+<h3><span class="section-number">1.3.1. </span>Beispiel 1<a class="headerlink" href="#beispiel-1" title="Permalink to this headline">¶</a></h3>
+<br>
+<center>
+    <div style="max-width: 60%; height: auto;">
+        <img 
+             src="static/school_classes.png" 
+             alt="2-level  school classes" 
+             title="2-level model (2)" />
+    </div>
+</center>
+</div>
+<div class="section" id="beispiel-2">
+<h3><span class="section-number">1.3.2. </span>Beispiel 2<a class="headerlink" href="#beispiel-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Können <code class="docutils literal notranslate"><span class="pre">units</span></code> zu mehreren “Klassen/Gruppen” gehören?</p></li>
+</ul>
+<br>
+<center>
+    <div style="max-width: 60%; height: auto;">
+        <img 
+             src="static/family_class.png" 
+             alt="2-level people in families" 
+             title="2-level model (3)" />
+    </div>
+</center>
+<ul class="simple">
+<li><p>Nein, eine Beochatung muss eindeutig zu einer einzigen Klasse zugeordnet werden.</p></li>
+</ul>
+</div>
+<div class="section" id="beispiel-3">
+<h3><span class="section-number">1.3.3. </span>Beispiel 3<a class="headerlink" href="#beispiel-3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Sind bestimmte <code class="docutils literal notranslate"><span class="pre">units</span></code> (z.B. Personen) immer auf dem niedrigten Level einzuordnen (z.B. Level 1)?</p></li>
+</ul>
+<br>
+<center>
+    <div style="max-width: 60%; height: auto;">
+        <img 
+             src="static/time_as_level.png" 
+             alt="2-level time in person" 
+             title="2-level model (4)" />
+    </div>
+</center>
+<ul class="simple">
+<li><p>Nein, innerhalb von Personen können mehrere Messzeitpunkte genestet sein.</p></li>
+</ul>
+</div>
+<div class="section" id="besipiel-4">
+<h3><span class="section-number">1.3.4. </span>Besipiel 4<a class="headerlink" href="#besipiel-4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Wie viele Levels sind angemessen, um die hierarchische Struktur der Daten abzubilden?</p></li>
+</ul>
+<br>
+<center>
+    <div style="max-width: 60%; height: auto;">
+        <img 
+             src="static/many_levels.png" 
+             alt="many nested levels" 
+             title="multi-level model with many nested levels" />
+    </div>
+</center>
+<ul class="simple">
+<li><p>Im Prinzip keine Begrenzung nach oben.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="konzequenzen-hierarchische-daten">
+<h2><span class="section-number">1.4. </span>Konzequenzen hierarchische Daten<a class="headerlink" href="#konzequenzen-hierarchische-daten" title="Permalink to this headline">¶</a></h2>
+<p><strong>Was sind die Konsequenzen hierarchischer Daten?</strong></p>
+<ul class="simple">
+<li><p>Beobachtungen innerhalb einer Einheit sind oftmals nicht unabhängig voneinander, sondern</p>
+<ul>
+<li><p>beeinflussen sich gegenseitig</p></li>
+<li><p>werden in gleicher Weise beeinflusst</p></li>
+</ul>
+</li>
+</ul>
+<p>Beispiele:</p>
+<ul class="simple">
+<li><p>Schüler:innen teilen Klassenkontext</p></li>
+<li><p>Patient:innen teilen behandelnden Arzt:in</p></li>
+<li><p>Geschwister teilen Gene und Umwelt</p></li>
+<li><p>Arbeitnehmer:innen teilen Unternehmen, Standort, usw.</p></li>
+</ul>
+<p>Weitere Konsequenzen hierarchischer Daten:</p>
+<ul class="simple">
+<li><p>Beobachtungen innerhalb einer Einheit ähneln sich stärker als die zwischen den Einheiten</p></li>
+<li><p>das verletzt die Unabhängigkeitsannahme verschiedener statistischen Methoden (z.B., die der Regression), die Daten sind also nicht <code class="docutils literal notranslate"><span class="pre">independent</span> <span class="pre">and</span> <span class="pre">identically</span> <span class="pre">distributed</span></code></p></li>
+<li><p>Werden solche Abhängigkeite ignoriert, resultieren (drastisch) unterschätzte Standardfehler mitunter irreführende Schätzungen von Zusammenhängen (s. Zusammenhang von Studiumdauer und Gehalt)</p></li>
+</ul>
+<p>Also, wie können wir mit hierarchisch organisierte Daten umgehen?</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="00_general_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Seminar: Multilevel-Modelle - SoSe 2022</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02_multilevel_model_specification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Modelspezifikation - Einführung</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By José Carlos García Alanis<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
