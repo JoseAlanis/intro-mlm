@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; MLM Seminar</title>
+    <title>3. Modelspezifikation - Modelparameter &#8212; MLM Seminar</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2. Modelspezifikation - Einführung" href="02_multilevel_model_specification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -96,10 +99,20 @@ const thebe_selector_output = ".output, .cell_output"
   Curriculum
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01_multilevel_models_intro.html">
    1. Einführung - Die Grund Idee eines MLM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_multilevel_model_specification.html">
+   2. Modelspezifikation - Einführung
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Modelspezifikation - Modelparameter
   </a>
  </li>
 </ul>
@@ -210,7 +223,88 @@ const thebe_selector_output = ".output, .cell_output"
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#themen-dieser-stunde">
+   3.1. Themen dieser Stunde
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ziele">
+   3.2. Ziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ruckblick-zur-letzten-sitzung">
+   3.3. Rückblick zur letzten Sitzung
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#offene-fragen">
+     3.3.1. Offene Fragen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schatzung-der-modelparameter">
+   3.4. Schätzung der Modelparameter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mehr-ebenen-modelle-modelschatzung">
+   3.5. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.6. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.7. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.8. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   3.9. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3.10. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.11. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zwischenfazit">
+     3.11.1. Zwischenfazit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3.12. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     3.12.1. Zwischenfazit
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -221,7 +315,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Modelspezifikation - Modelparameter</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -230,7 +324,88 @@ const thebe_selector_output = ".output, .cell_output"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#themen-dieser-stunde">
+   3.1. Themen dieser Stunde
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ziele">
+   3.2. Ziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ruckblick-zur-letzten-sitzung">
+   3.3. Rückblick zur letzten Sitzung
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#offene-fragen">
+     3.3.1. Offene Fragen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schatzung-der-modelparameter">
+   3.4. Schätzung der Modelparameter
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mehr-ebenen-modelle-modelschatzung">
+   3.5. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.6. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.7. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.8. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   3.9. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3.10. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   3.11. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zwischenfazit">
+     3.11.1. Zwischenfazit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3.12. Mehr-Ebenen Modelle - Modelschätzung
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     3.12.1. Zwischenfazit
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -240,286 +415,319 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Grundidee</span>
-
-<span class="c1">### Zwischenfazit:</span>
-
-<span class="o">-</span> <span class="n">Dafür</span> <span class="n">bieten</span> <span class="n">sich</span> <span class="n">Mehrebenenmodelle</span> <span class="n">an</span><span class="o">.</span>
-  <span class="o">-</span> <span class="n">Andere</span> <span class="n">Bezeichnungen</span> <span class="p">:</span> <span class="n">Hierarchisch</span> <span class="n">Lineares</span> <span class="n">Modell</span><span class="p">,</span> <span class="o">**</span><span class="n">Mixed</span><span class="o">-</span><span class="n">Effects</span> <span class="n">Model</span><span class="o">**</span><span class="p">,</span> <span class="n">Linear</span> <span class="n">Mixed</span> <span class="n">Model</span><span class="o">.</span>
-</pre></div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="modelspezifikation-modelparameter">
+<h1><span class="section-number">3. </span>Modelspezifikation - Modelparameter<a class="headerlink" href="#modelspezifikation-modelparameter" title="Permalink to this headline">¶</a></h1>
+<br>
+<p>Ansprechpartner:
+<a class="reference external" href="https://github.com/JoseAlanis">José C. García Alanis (he/him)</a><br />
+Wissenschaftlicher Mitarbeiter - Analyse und Modellierung komplexer Daten <a class="reference external" href="https://methoden.amd.psychologie.uni-mainz.de/">an der JGU</a>.<br />
+Kinder- und Jugendlichen-Psychotherapie in <a class="reference external" href="https://www.uni-marburg.de/de">Marburg</a>.<br />
+Mitglied in <a class="reference external" href="https://www.uni-marburg.de/en/fb04/rtg-2271">RTG 2271 | Breaking Expectations</a> und <a class="reference external" href="https://brainhack.org/">Brainhack</a>.<br />
+<br></p>
+<p>Kontakt:
+<span class="xref myst">jose.alanis[at]uni-mainz.de</span></p>
+<p><img align="left" src="https://raw.githubusercontent.com/G0RELLA/gorella_mwn/master/lecture/static/Twitter%20social%20icons%20-%20circle%20-%20blue.png" alt="logo" title="Twitter" width="30" height="30" /> <img align="left" src="https://raw.githubusercontent.com/G0RELLA/gorella_mwn/master/lecture/static/GitHub-Mark-120px-plus.png" alt="logo" title="Github" width="30" height="30" />     <a class="reference external" href="https://twitter.com/JoiAlhaniz">&#64;JoiAlhaniz</a> / <a class="reference external" href="https://github.com/JoseAlanis">&#64;JoseAlanis</a></p>
+<br><div class="section" id="themen-dieser-stunde">
+<h2><span class="section-number">3.1. </span>Themen dieser Stunde<a class="headerlink" href="#themen-dieser-stunde" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Schätzung der Modellparameter in einem Multi-Level Modell.</p></li>
+</ul>
+</div>
+<div class="section" id="ziele">
+<h2><span class="section-number">3.2. </span>Ziele<a class="headerlink" href="#ziele" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Wie werden Intercept und Steigung im Kontext von Multi-Level Modellen geschätzt?</p></li>
+<li><p>Wie untescheiden sich diese von dem Intercept und der Steigung einer einfachen linearen Regression?</p>
+<ul>
+<li><p>Was sind Gemeinsamkeiten?</p></li>
+</ul>
+</li>
+<li><p>Was sind <strong>“Random-Effects”</strong>?</p></li>
+<li><p>Wie so können “Multi-Level Modelle” auch als <strong>“Mixed-Effects Modelle”</strong> verstanden werden?</p></li>
+</ul>
+</div>
+<div class="section" id="ruckblick-zur-letzten-sitzung">
+<h2><span class="section-number">3.3. </span>Rückblick zur letzten Sitzung<a class="headerlink" href="#ruckblick-zur-letzten-sitzung" title="Permalink to this headline">¶</a></h2>
+<p>In einem ersten Schritt hatten also eine einfache Regression für drei verschieden Klasse berechnet, um die Ergebnisse aus diesen Regressionen vergleichen.</p>
+<p>Wir wollten dadurch den Zusammenhang zwischen sozioökonomischem Status (<code class="docutils literal notranslate"><span class="pre">ses</span></code>) und Lesekompetenz (<code class="docutils literal notranslate"><span class="pre">performance</span></code>) in den drei Klassen näher betrachten. Darüber hinaus, wollten wir wissen, ob <code class="docutils literal notranslate"><span class="pre">Klassenzugehörigkeit</span></code>, diesen Zusammenhang moduliert.</p>
+<ul class="simple">
+<li><p>Die <strong>3 Regressionen</strong> (eine Regression pro Klasse) lieferten uns folgende Ergebnisse und Modelparameter:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 70%; height: auto;">
+         <img 
+              src="static/fig_3.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>
+<ul class="simple">
+<li><p>Intercept (<span class="math notranslate nohighlight">\(\widehat{\beta}_{0, 1}\)</span>) und Steigung (<span class="math notranslate nohighlight">\(\widehat{\beta}_{1, 1}\)</span>) für <strong><font color='red'>Klasse 1</font></strong></p></li>
+<li><p>Intercept (<span class="math notranslate nohighlight">\(\widehat{\beta}_{0, 2}\)</span>) und Steigung (<span class="math notranslate nohighlight">\(\widehat{\beta}_{1, 2}\)</span>) für <strong><font color='blue'>Klasse 2</font></strong></p></li>
+<li><p>Intercept (<span class="math notranslate nohighlight">\(\widehat{\beta}_{0, 3}\)</span>) und Steigung (<span class="math notranslate nohighlight">\(\widehat{\beta}_{1, 3}\)</span>) für <strong><font color='green'>Klasse 3</font></strong></p></li>
+</ul>
+<div class="section" id="offene-fragen">
+<h3><span class="section-number">3.3.1. </span>Offene Fragen<a class="headerlink" href="#offene-fragen" title="Permalink to this headline">¶</a></h3>
+<p>Doch wie lassen sich diese Ergebnisse integrieren, um Rückschlüsse auf die Population zu erlauben.</p>
+<p>Gehen wir dieser Vorgang noch im Detail durch.</p>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/1031842900.py&quot;</span><span class="gt">, line </span><span class="mi">5</span>
-    <span class="o">-</span> <span class="n">Dafür</span> <span class="n">bieten</span> <span class="n">sich</span> <span class="n">Mehrebenenmodelle</span> <span class="n">an</span><span class="o">.</span>
-             <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
+<div class="section" id="schatzung-der-modelparameter">
+<h2><span class="section-number">3.4. </span>Schätzung der Modelparameter<a class="headerlink" href="#schatzung-der-modelparameter" title="Permalink to this headline">¶</a></h2>
+<p>Die allgemeine Formel für unser Regressionsmodell sieht folgender maßen aus.</p>
+<div class="math notranslate nohighlight">
+\[
+Y_{i, j}= \hat{\beta}_{0, j} +\hat{\beta}_{1, j} \cdot X_{i, j}+e_{i, j}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\hat{\beta}_{0, j}\)</span> und <span class="math notranslate nohighlight">\(\hat{\beta}_{1, j}\)</span> sind uns aus der letzten Sitzung bekannt.</p>
+<ul class="simple">
+<li><p>Sie erhalten einen Index <strong>j</strong>, der die Gruppenzugehörigkeit angibt.</p></li>
+<li><p>Die beobachteten Werte werden durch <span class="math notranslate nohighlight">\(X\)</span> (<code class="docutils literal notranslate"><span class="pre">ses</span></code>) und <span class="math notranslate nohighlight">\(Y\)</span> (<code class="docutils literal notranslate"><span class="pre">performance</span></code>) angegeben.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Y_{i, j}\)</span> erhält sowohl den Index <strong>j</strong> (Gruppenzugehörigkeit) als auch den Index <strong>i</strong> (das Individuum).</p>
+<ul>
+<li><p>Es gibt so viele <strong>i</strong> wie Beobachtungen im Datensatz.</p></li>
+<li><p>Es gibt so viele <strong>j</strong> wie Gruppen im Datensatz</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Residuen <span class="math notranslate nohighlight">\(e_{i, j}\)</span> erhalten ebenfalls <strong>i</strong> und <strong>j</strong>, weil ein Residuum pro Beobauchtung berechnet wird.</p></li>
+</ul>
+<p>Wenn wir die Ergebnisse aus den drei Regressionen in die Formel der Regression einsetzen ergibt sich folgendes Muster:</p>
+<br>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ll} 
+&amp; Y_{i, j}=\hat{\beta}_{0, j}+\hat{\beta}_{1, j} \cdot X_{i, j}+e_{i, j} \\
+\\
+\text{ Wird zu: } \\
+\\
+\text { Klasse 1: } &amp; Y_{i, 1}=1.05+0.35 \cdot X_{i, 1}+e_{i, 1} \\
+\text { Klasse 2: } &amp; Y_{i, 2}=0.49+0.23 \cdot X_{i, 2}+e_{i, 2} \\
+\text { Klasse 3: } &amp; Y_{i, 3}=-1.28+0.05 \cdot X_{i, 3}+e_{i, 3}
+\end{array}
+\end{split}\]</div>
+<p>Daraus ergibt sich für die Population folgende Erkenntnis:
+<br></p>
+<center>
+     <div 
+          style="max-width: 30%; height: auto;">
+         <img 
+              src="static/fig_4_1.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>
+<p>Wir können dies folgendermaßen  lesen:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{\beta}_{1}\)</span> (die Steigung auf Populationsebene) setzt sich aus den Werten 0.35, 0.23, 0.05 zusammen.</p>
+<ul>
+<li><p>Oder: Unterschiedliche Gruppen haben <strong>unterschiedliche Steigungen</strong>, die <strong>zufällig Variieren</strong> können. Die Steigung auf Populationsebene liegt irgendwo dazwischen.</p></li>
+</ul>
+</li>
+<li><p>Das gleich gilt für <span class="math notranslate nohighlight">\(\hat{\beta}_{0}\)</span></p></li>
+</ul>
 </div>
+<div class="section" id="mehr-ebenen-modelle-modelschatzung">
+<h2><span class="section-number">3.5. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#mehr-ebenen-modelle-modelschatzung" title="Permalink to this headline">¶</a></h2>
+<br>
+<center>
+     <div 
+          style="max-width: 30%; height: auto;">
+         <img 
+              src="./02_figures/fig_4.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>
+<ul class="simple">
+<li><p>Anstelle gruppenspezifische Regressionen durchzuführen, könnte man auch den Mittelwert der Koeffizienten und die Abweichung jeder Gruppe bestimmen.</p></li>
+</ul>
+<br>
+<ul class="simple">
+<li><p>Mittlere Koeffizienten:</p></li>
+</ul>
+<center>
+     <div 
+          style="max-width: 30%; height: auto;">
+         <img 
+              src="./02_figures/fig_5_1.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
+<ul class="simple">
+<li><p>Gruppenspezifische Abweichung:</p></li>
+</ul>
+<center>
+     <div 
+          style="max-width: 30%; height: auto;">
+         <img 
+              src="./02_figures/fig_5_2.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  </div>
+<div class="section" id="id1">
+<h2><span class="section-number">3.6. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>zurück zu unseren Beispiel.</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_3.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
 </div>
+<div class="section" id="id2">
+<h2><span class="section-number">3.7. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>zurück zu unseren Beispiel.</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_6.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  </div>
+<div class="section" id="id3">
+<h2><span class="section-number">3.8. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>für dieses Beispiel resultiert die folgende Struktur:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_7.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
+<ul class="simple">
+<li><p>Die gruppenspezifischen Regressionskoeffizienten (𝛽 0𝑗 , 𝛽 1𝑗) werden also ausgedrückt als Summe von:</p>
+<ul>
+<li><p>a) gruppenunspezifischen (mittleren) Koeffizienten (𝛾 0(𝛽 0), 𝛾 0(𝛽 1))</p></li>
+<li><p>b) gruppenspezifischen Abweichungen (Level-2 Residuen: 𝑢𝑗(𝛽 0), 𝑢𝑗(𝛽 1))</p></li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">-</span> <span class="n">Wir</span> <span class="n">könnten</span> <span class="n">je</span> <span class="n">Klasse</span> <span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="n">eine</span> <span class="n">eigene</span> <span class="n">Regression</span> <span class="n">zur</span> <span class="n">Vorhersage</span> <span class="n">der</span> <span class="n">Leistung</span> <span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="n">durch</span> <span class="n">Status</span> <span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">durchführen</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_4.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Die</span> <span class="n">beobachteten</span> <span class="n">Werte</span> <span class="p">(</span><span class="n">X</span> <span class="n">und</span> <span class="n">Y</span><span class="p">),</span> <span class="n">Regressionskoeffizienten</span> <span class="p">(</span><span class="n">𝛽</span> <span class="mi">0</span><span class="n">und</span> <span class="n">𝛽</span> <span class="mi">1</span><span class="p">)</span> <span class="n">und</span> <span class="n">Residuen</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="n">erhalten</span> <span class="n">einen</span> <span class="n">weiteren</span> <span class="n">Index</span> <span class="n">j</span><span class="p">,</span> <span class="n">der</span> <span class="n">die</span> <span class="n">Gruppenzugehörigkeit</span> <span class="n">angibt</span><span class="o">.</span> <span class="n">Wir</span> <span class="n">erhalten</span> <span class="n">also</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_4_1.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-</pre></div>
+<div class="section" id="id4">
+<h2><span class="section-number">3.9. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>für dieses Beispiel resultiert die folgende Struktur:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_8.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
+<ul class="simple">
+<li><p>Wenn wir die Werte einsetzten ergibt sich:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_8_1.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  </div>
+<div class="section" id="id5">
+<h2><span class="section-number">3.10. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>für dieses Beispiel resultiert die folgende Struktur:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_8.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
+<ul class="simple">
+<li><p>Wenn wir die Werte einsetzten ergibt sich:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 60%; height: auto;">
+         <img 
+              src="./02_figures/fig_9.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/96844371.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">-</span> <span class="n">Wir</span> <span class="n">könnten</span> <span class="n">je</span> <span class="n">Klasse</span> <span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="n">eine</span> <span class="n">eigene</span> <span class="n">Regression</span> <span class="n">zur</span> <span class="n">Vorhersage</span> <span class="n">der</span> <span class="n">Leistung</span> <span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="n">durch</span> <span class="n">Status</span> <span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">durchführen</span><span class="p">:</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_4.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Anstelle</span> <span class="n">gruppenspezifische</span> <span class="n">Regressionen</span> <span class="n">durchzuführen</span><span class="p">,</span> <span class="n">könnte</span> <span class="n">man</span> <span class="n">auch</span> <span class="n">den</span> <span class="n">Mittelwert</span> <span class="n">der</span> <span class="n">Koeffizienten</span> <span class="n">und</span> <span class="n">die</span> <span class="n">Abweichung</span> <span class="n">jeder</span> <span class="n">Gruppe</span> <span class="n">bestimmen</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Mittlere</span> <span class="n">Koeffizienten</span><span class="p">:</span>
-  
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_5_1.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;300&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Gruppenspezifische</span> <span class="n">Abweichung</span><span class="p">:</span>
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_5_2.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;300&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/763373275.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">-</span> <span class="n">zurück</span> <span class="n">zu</span> <span class="n">unseren</span> <span class="n">Beispiel</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_3.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;800&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;800&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/4106051892.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">-</span> <span class="n">zurück</span> <span class="n">zu</span> <span class="n">unseren</span> <span class="n">Beispiel</span><span class="o">.</span>
-             <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">-</span> <span class="n">zurück</span> <span class="n">zu</span> <span class="n">unseren</span> <span class="n">Beispiel</span><span class="o">.</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_6.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;900&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;900&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/1331419817.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">-</span> <span class="n">zurück</span> <span class="n">zu</span> <span class="n">unseren</span> <span class="n">Beispiel</span><span class="o">.</span>
-             <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">-</span> <span class="n">für</span> <span class="n">dieses</span> <span class="n">Beispiel</span> <span class="n">resultiert</span> <span class="n">die</span> <span class="n">folgende</span> <span class="n">Struktur</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_7.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Die</span> <span class="n">gruppenspezifischen</span> <span class="n">Regressionskoeffizienten</span> <span class="p">(</span><span class="n">𝛽</span> <span class="mi">0</span><span class="n">𝑗</span> <span class="p">,</span> <span class="n">𝛽</span> <span class="mi">1</span><span class="n">𝑗</span><span class="p">)</span> <span class="n">werden</span> <span class="n">also</span> <span class="n">ausgedrückt</span> <span class="n">als</span> <span class="n">Summe</span> <span class="n">von</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="n">gruppenunspezifischen</span> <span class="p">(</span><span class="n">mittleren</span><span class="p">)</span> <span class="n">Koeffizienten</span> <span class="p">(</span><span class="n">𝛾</span> <span class="mi">0</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">0</span><span class="p">),</span> <span class="n">𝛾</span> <span class="mi">0</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">1</span><span class="p">))</span>
-  <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="n">gruppenspezifischen</span> <span class="n">Abweichungen</span> <span class="p">(</span><span class="n">Level</span><span class="o">-</span><span class="mi">2</span> <span class="n">Residuen</span><span class="p">:</span> <span class="n">𝑢𝑗</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">0</span><span class="p">),</span> <span class="n">𝑢𝑗</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/2682304703.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">-</span> <span class="n">für</span> <span class="n">dieses</span> <span class="n">Beispiel</span> <span class="n">resultiert</span> <span class="n">die</span> <span class="n">folgende</span> <span class="n">Struktur</span><span class="p">:</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">-</span> <span class="n">für</span> <span class="n">dieses</span> <span class="n">Beispiel</span> <span class="n">resultiert</span> <span class="n">die</span> <span class="n">folgende</span> <span class="n">Struktur</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-    
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_8.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Wenn</span> <span class="n">wir</span> <span class="n">die</span> <span class="n">Werte</span> <span class="n">einsetzten</span> <span class="n">ergibt</span> <span class="n">sich</span><span class="p">:</span>
-
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-    
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_8_1.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;900&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;900&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/3845388701.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">-</span> <span class="n">für</span> <span class="n">dieses</span> <span class="n">Beispiel</span> <span class="n">resultiert</span> <span class="n">die</span> <span class="n">folgende</span> <span class="n">Struktur</span><span class="p">:</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="o">-</span> <span class="n">für</span> <span class="n">dieses</span> <span class="n">Beispiel</span> <span class="n">resultiert</span> <span class="n">die</span> <span class="n">folgende</span> <span class="n">Struktur</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-    
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_8.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span>
-
-<span class="o">-</span> <span class="n">Wenn</span> <span class="n">wir</span> <span class="n">die</span> <span class="n">Werte</span> <span class="n">einsetzten</span> <span class="n">ergibt</span> <span class="n">sich</span><span class="p">:</span>
-
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-    
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_9.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;700&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;700&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/3888311717.py&quot;</span><span class="gt">, line </span><span class="mi">3</span>
-    <span class="o">-</span> <span class="n">für</span> <span class="n">dieses</span> <span class="n">Beispiel</span> <span class="n">resultiert</span> <span class="n">die</span> <span class="n">folgende</span> <span class="n">Struktur</span><span class="p">:</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Mehr-Ebenen Modelle - Modelschätzung
-
-### Zwischenfazit
-
-Fixed versus Random Effects
-- Einfache Lineare Regression:
-
-$$
+<div class="section" id="id6">
+<h2><span class="section-number">3.11. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="zwischenfazit">
+<h3><span class="section-number">3.11.1. </span>Zwischenfazit<a class="headerlink" href="#zwischenfazit" title="Permalink to this headline">¶</a></h3>
+<p>Fixed versus Random Effects</p>
+<ul class="simple">
+<li><p>Einfache Lineare Regression:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 y =\beta_{0} + X\beta + \epsilon
-$$
-
-  - Die Regressionskoeffizienten 𝛽 0, 𝛽 1 sind **für alle Beobachtungen identisch**. Daher nennt man diese **fixed effects Koeffizienten** (oder **feste Faktoren** oder deterministische Koeffizienten).
-  - Hingegen hat jede Person einen eigenen Wert auf der Residualvariablen ( e i ), die unabhängig und normalverteilt sein soll. **Das Residuum ist also eine Zufallsvariable** mit einer bestimmten Verteilung. Daher nennt man dies einen **random effect** (oder **Zufallsfaktor** oder stochastischen Koeffizienten).
-</pre></div>
+\]</div>
+<ul class="simple">
+<li><p>Die Regressionskoeffizienten <span class="math notranslate nohighlight">\(\beta_{0}\)</span> , <span class="math notranslate nohighlight">\(\beta_{1} \)</span> sind <strong>für alle Beobachtungen identisch</strong>. Daher nennt man diese <strong>fixed effects Koeffizienten</strong> (oder <strong>feste Faktoren</strong> oder deterministische Koeffizienten).</p></li>
+<li><p>Hingegen hat jede Person einen eigenen Wert auf der Residualvariablen (<span class="math notranslate nohighlight">\(e_{i, j}\)</span>), die unabhängig und normalverteilt sein soll. <strong>Das Residuum ist also eine Zufallsvariable</strong> mit einer bestimmten Verteilung. Daher nennt man dies einen <strong>random effect</strong> (oder <strong>Zufallsfaktor</strong> oder stochastischen Koeffizienten).</p></li>
+</ul>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/3559769898.py&quot;</span><span class="gt">, line </span><span class="mi">5</span>
-    <span class="n">Fixed</span> <span class="n">versus</span> <span class="n">Random</span> <span class="n">Effects</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Mehr-Ebenen Modelle - Modelschätzung</span>
-
-<span class="c1">### Zwischenfazit</span>
-
-<span class="n">Fixed</span> <span class="n">versus</span> <span class="n">Random</span> <span class="n">Effects</span>
-<span class="o">-</span> <span class="n">Mehr</span><span class="o">-</span><span class="n">Ebenen</span> <span class="n">Regression</span><span class="p">:</span>
-
-<span class="o">&lt;</span><span class="n">br</span><span class="o">&gt;</span>
-    
-<span class="o">&lt;</span><span class="n">center</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./02_figures/fig_10.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Photo showing Jose Alanis&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Jose&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;300&quot;</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;300&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;/</span><span class="n">center</span><span class="o">&gt;</span> 
-
-
-  <span class="o">-</span> <span class="n">Wenn</span> <span class="n">die</span> <span class="n">Regressionskoeffizienten</span> <span class="n">𝛽</span> <span class="mi">0</span><span class="n">𝑗</span> <span class="n">und</span> <span class="n">𝛽</span> <span class="mi">1</span><span class="n">𝑗</span> <span class="n">über</span> <span class="n">die</span> <span class="n">j</span> <span class="n">Gruppen</span> <span class="n">variieren</span> <span class="n">dürfen</span><span class="p">,</span> <span class="n">bezeichnet</span> <span class="n">man</span> <span class="n">diese</span> <span class="n">als</span> <span class="o">**</span><span class="n">random</span> <span class="n">effects</span> <span class="n">Koeffizienten</span><span class="o">**.</span>
-  <span class="o">-</span> <span class="n">Random</span> <span class="n">effects</span> <span class="n">Koeffizienten</span> <span class="n">bestehen</span> <span class="n">aus</span> <span class="n">zwei</span> <span class="n">Teilen</span><span class="p">:</span>
-    <span class="o">-</span>  <span class="n">Ein</span> <span class="n">Teil</span> <span class="n">ist</span> <span class="n">über</span> <span class="n">Gruppen</span> <span class="n">identisch</span><span class="p">,</span> <span class="n">also</span> <span class="n">fixed</span> <span class="n">𝛾0</span> <span class="p">(</span><span class="n">𝛽</span> <span class="mi">0</span><span class="p">),</span>  <span class="n">𝛾0</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="o">-</span> <span class="n">Das</span> <span class="n">Level</span> <span class="mi">2</span> <span class="n">Residuum</span> <span class="n">variiert</span> <span class="n">über</span> <span class="n">Gruppen</span> <span class="p">,</span> <span class="n">ist</span> <span class="n">also</span> <span class="n">random</span> <span class="n">𝑢𝑗</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">0</span><span class="p">),</span> <span class="n">𝑢𝑗</span><span class="p">(</span><span class="n">𝛽</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;C:\Users\jcgal\AppData\Local\Temp/ipykernel_11448/3769611263.py&quot;</span><span class="gt">, line </span><span class="mi">5</span>
-    <span class="n">Fixed</span> <span class="n">versus</span> <span class="n">Random</span> <span class="n">Effects</span>
-          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
+<div class="section" id="id7">
+<h2><span class="section-number">3.12. </span>Mehr-Ebenen Modelle - Modelschätzung<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3><span class="section-number">3.12.1. </span>Zwischenfazit<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Fixed versus Random Effects</p>
+<ul class="simple">
+<li><p>Mehr-Ebenen Regression:</p></li>
+</ul>
+<br>
+<center>
+     <div 
+          style="max-width: 30%; height: auto;">
+         <img 
+              src="./02_figures/fig_10.png" 
+              alt="OLS fit with groups" 
+              title="OLS groups" >
+     </div>
+</center>  
+<ul class="simple">
+<li><p>Wenn die Regressionskoeffizienten <span class="math notranslate nohighlight">\(\beta_{0, j}\)</span> und <span class="math notranslate nohighlight">\(\beta_{0, }\)</span> über die <strong>j</strong> Gruppen variieren dürfen, bezeichnet man diese als <strong>random effects Koeffizienten</strong>.</p></li>
+<li><p>Random effects Koeffizienten bestehen aus zwei Teilen:</p>
+<ul>
+<li><p>Ein Teil ist über Gruppen identisch, also fixed 𝛾0 <span class="math notranslate nohighlight">\(\beta_{0}\)</span>,  𝛾0 <span class="math notranslate nohighlight">\(\beta_{1}\)</span></p></li>
+<li><p>Das Level 2 Residuum variiert über Gruppen , ist also random 𝑢𝑗 <span class="math notranslate nohighlight">\(\beta_{0}\)</span>, 𝑢𝑗 <span class="math notranslate nohighlight">\(\beta_{1}\)</span></p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -548,7 +756,14 @@ $$
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02_multilevel_model_specification.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Modelspezifikation - Einführung</p>
+        </div>
+    </a>
 </div>
             
         </div>

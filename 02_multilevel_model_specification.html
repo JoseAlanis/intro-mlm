@@ -391,7 +391,11 @@ Mitglied in <a class="reference external" href="https://www.uni-marburg.de/en/fb
 <br><div class="section" id="themen-dieser-stunde">
 <h2><span class="section-number">2.1. </span>Themen dieser Stunde<a class="headerlink" href="#themen-dieser-stunde" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Schätzung der <strong>Modelparameter</strong></p></li>
+<li><p>Welche <strong>Modelparameter</strong> gibt es?</p>
+<ul>
+<li><p>Was sagen sie aus?</p></li>
+</ul>
+</li>
 <li><p>Fallbeispiele</p></li>
 <li><p><strong>Fixed-Effects</strong> Modelle</p></li>
 </ul>
@@ -401,9 +405,8 @@ Mitglied in <a class="reference external" href="https://www.uni-marburg.de/en/fb
 <p>Am Ende des heutigen Termins solltet ihr folgede Fragen beantworten können:</p>
 <ul class="simple">
 <li><p>In wie fern unterschieden sich eine einfache Regression von einen Multi-Level Modell?</p></li>
-<li><p>Was versteht man unter “Fixed-Effects” und was sind “Fixed-Effects Modelle”?</p></li>
-<li><p>Was sind “Random-Effects”?</p></li>
-<li><p>Wieso lassen sich Multi-Level Modelle auch als “Mixed-Effects Modelle” verstehen?</p></li>
+<li><p>Wie interpretiert man die Modelparameter <strong>Intercept</strong> und <strong>Steigung</strong>.</p></li>
+<li><p>Was versteht man unter <strong>“Fixed-Effects”</strong> und was sind “Fixed-Effects Modelle”?</p></li>
 </ul>
 </div>
 <div class="section" id="ruckblick-zur-letzten-stunde">
@@ -587,10 +590,14 @@ den Zusammenhang zwischen <code class="docutils literal notranslate"><span class
 <li><p>Bei K-1 zu schätzenden Parameter ergibt das 499 Indikatorvariablen …</p></li>
 </ul>
 </li>
-<li><p>Was wenn wir uns nicht damit zufriedengeben wollen, zu zeigen, dass Unterschiede zwischen Klassen existieren (bzw. für diese kontrollieren).</p></li>
-<li><p>Was wenn wir diese Unterschiede in einem Modell integrieren wollen, erklären, um bessere Vorhersagen im Feld zu ermöglichen?</p>
+<li><p>Was machen wir, wenn wir uns nicht damit zufriedengeben wollen, zu zeigen, dass Unterschiede zwischen Klassen existieren.</p>
 <ul>
-<li><p>oder Rückschlüsse auf die Generatoren dieser Unterschiede zu ermöglichen?</p></li>
+<li><p>Bisher haben wir “nur” dafür kontrolliert.</p></li>
+</ul>
+</li>
+<li><p>Was machen wir, wenn wir Unterschiede zwischen Klassen/Gruppem in einem Modell integrieren wollen, um bessere Vorhersagen im Feld zu ermöglichen?</p>
+<ul>
+<li><p>Und dadurch Rückschlüsse auf die Generatoren dieser Unterschiede zu ermöglichen?</p></li>
 </ul>
 </li>
 </ul>
